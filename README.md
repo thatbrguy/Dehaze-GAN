@@ -1,5 +1,5 @@
 # Dehaze-GAN
-This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [Demo](Youtube!)
+This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](Youtube!)]
 
 (image)
 

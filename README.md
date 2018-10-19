@@ -6,16 +6,6 @@ This repository contains TensorFlow code for the paper titled A Single Image Haz
 	</img>
 </p>
 
-**Note:** 
-1. The first version of this project was completed around December 2017. The demo video (dated March 2018) reflects the performance of one of the final versions, however some iterative improvements were made after that. 
-2. This repository contains code that can be used for any application, and is not limited to Dehazing. 
-3. For recreating the results reported in the paper, use the repository `legacy` (for more details refer below). This repository is the refactored version of the final model, but it uses newer versions of some TensorFlow operations. Those operations are not available in the old saved checkpoints.
-
-<p align = "center">
-	<img src="/src/model.png" alt="Block diagram of the Dehaze-GAN">
-	</img>
-</p>
-
 ## Features:
 The model has the following components:
 - The 56-Layer Tiramisu as the generator.
@@ -26,6 +16,16 @@ The model has the following components:
   - L1 loss component.
 
 The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss involves using only the (what) component of (this work). 
+
+<p align = "center">
+	<img src="/src/model.png" alt="Block diagram of the Dehaze-GAN">
+	</img>
+</p>
+
+**Note:** 
+1. The first version of this project was completed around December 2017. The demo video (dated March 2018) reflects the performance of one of the final versions, however some iterative improvements were made after that. 
+2. This repository contains code that can be used for any application, and is not limited to Dehazing. 
+3. For recreating the results reported in the paper, use the repository `legacy` (for more details refer below). This repository is the refactored version of the final model, but it uses newer versions of some TensorFlow operations. Those operations are not available in the old saved checkpoints.
 
 ## Requirements:
 - TensorFlow (version 1.4+)

@@ -2,7 +2,7 @@
 This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](Youtube!)]
 
 <p align = "center">
-	<img src="/src/fog.png" alt="Dehaze-GAN in action">
+	<img src="/src/fog.png" alt="Dehaze-GAN in action" height=50% width=50%>
 	</img>
 </p>
 

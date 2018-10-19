@@ -1,7 +1,10 @@
 # Dehaze-GAN
 This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](Youtube!)]
 
-(image)
+<p align = "center">
+	<img src="/src/model.png" alt="Block diagram of the Dehaze-GAN">
+	</img>
+</p>
 
 **Note:** 
 1. The first version of this project was completed around December 2017. The demo video (dated March 2018) reflects the performance of one of the final versions, however some iterative improvements were made after that. 

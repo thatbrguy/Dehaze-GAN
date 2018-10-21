@@ -41,10 +41,15 @@ git clone https://github.com/thatbrguy/Dehaze-GAN.git
 2. A VGG-19 pretrained on the ImageNet dataset is required to calculate Perceptual loss. In this work, we used the weights provided by [link](placeholder)'s implementation. Download the weights from this [link](placeholder) and include it in this repository.
 > **Note:** You can use Keras' pretrained VGG-19 as well, as it can automatically download the ImageNet weights. However, my original implementation did not use it.
 
-3. Train the model by using:
+3. Train the model by uusing the following code. 
 ```
-python train.py
+python train.py \
+	--A_dir A \
+	--B_dir B \
+	--val_fraction 0.15
 ```
+Here, directory `A` contains the input images, and directory `B` contains the target images. Both directories should be placed in this repository before running the code.
+
 The file `train.py` supports a lot of options, which are listed below:
 - `--model_name`: Tensorboard, logs, samples and checkpoint files are stored in a folder named `model_name`. Default value is `model`.
 - `--lr`: Sets the learning rate for both the generator and the discriminator. Default value is `0.001`.
@@ -58,7 +63,12 @@ The file `train.py` supports a lot of options, which are listed below:
 - `--layers`: Number of layers per dense block. Default value is `4`.
 - `--decay`: Decay for the batchnorm operation. Default value is `0.99`.
 - `--D_filters`: Number of filters in the 1st conv layer of the discriminator. Number of filters is multiplied by 2 for every successive layer. Default value is `64`.
-
+- `--save_samples`: Since GAN convergence is hard to interpret from metrics, you can choose to visualize the output of the generator after each validation run. This boolean flag enables the behavior. Default value is `False`.
+- `--sample_image_dir`: If `save_samples` is set to `True`, you must provide sample images placed in a directory. Give the name of that directory to this argument. Default value is `samples`.
+- `--custom_data`: Boolean flag that allows you to use your own data for training. Default is `True`. (Note: As of now, I have not linked the data I used for training).
+- `--A_dir`: Directory containing the ipnut images. Only used when `custom_data` is set to `True`. Default value is `A`.
+- `--B_dir`: Directory containing the ipnut images. Only used when `custom_data` is set to `True`. Default value is `B`.
+- `--val_fraction`: Fraction of the data to be used for validation. Only used when `custom_data` is set to `True`. Default value is `0.15`.
 
 ## License:
 This repository is open source under the MIT clause. Feel free to use it for academic and educational purposes.

@@ -1,5 +1,5 @@
 # Dehaze-GAN
-This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](Youtube!)]
+This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](Youtube!)][[Arxiv -- Will be published on 24th Oct 2018](soon!)]
 
 <p align = "center">
 	<img src="/src/fog.png" alt="Dehaze-GAN in action" height=50% width=50%>
@@ -22,7 +22,7 @@ The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss in
 	</img>
 </p>
 
-**Note:** 
+## Notes: 
 1. The first version of this project was completed around December 2017. The demo video (dated March 2018) reflects the performance of one of the final versions, however some iterative improvements were made after that. 
 2. This repository contains code that can be used for any application, and is not limited to Dehazing. 
 3. For recreating the results reported in the paper, use the repository `legacy` (for more details refer below). This repository is the refactored version of the final model, but it uses newer versions of some TensorFlow operations. Those operations are not available in the old saved checkpoints.
@@ -41,16 +41,18 @@ git clone https://github.com/thatbrguy/Dehaze-GAN.git
 2. A VGG-19 pretrained on the ImageNet dataset is required to calculate Perceptual loss. In this work, we used the weights provided by [link](placeholder)'s implementation. Download the weights from this [link](placeholder) and include it in this repository.
 > **Note:** You can use Keras' pretrained VGG-19 as well, as it can automatically download the ImageNet weights. However, my original implementation did not use it.
 
-3. Train the model by uusing the following code. 
-```
-python train.py \
-	--A_dir A \
-	--B_dir B \
-	--val_fraction 0.15
-```
-Here, directory `A` contains the input images, and directory `B` contains the target images. Both directories should be placed in this repository before running the code.
+3. Create two directories `A` and `B` in this repository. Place the inputs images into directory `A` and target images into directory `B`. Ensure that an input and target pair has the same name, otherwise it will be ignored by the program (For instance, if `1.jpg` is present in `A` it must also be present in `B`). Resize all images to be of size `(256, 256, 3)`.
 
-The file `train.py` supports a lot of options, which are listed below:
+4. Train the model by uusing the following code. 
+```
+python main.py \
+--A_dir A \
+--B_dir B \
+--batch_size 2 \
+--epochs 20
+```
+The file `main.py` supports a lot of options, which are listed below:
+- `--mode`: Select between `train`, `test` and `inference` modes. Default value is `train`
 - `--model_name`: Tensorboard, logs, samples and checkpoint files are stored in a folder named `model_name`. Default value is `model`.
 - `--lr`: Sets the learning rate for both the generator and the discriminator. Default value is `0.001`.
 - `--epochs`: Sets the number of epochs. Default value is `200`.
@@ -69,6 +71,9 @@ The file `train.py` supports a lot of options, which are listed below:
 - `--A_dir`: Directory containing the ipnut images. Only used when `custom_data` is set to `True`. Default value is `A`.
 - `--B_dir`: Directory containing the ipnut images. Only used when `custom_data` is set to `True`. Default value is `B`.
 - `--val_fraction`: Fraction of the data to be used for validation. Only used when `custom_data` is set to `True`. Default value is `0.15`.
+- `--val_threshold`: Number of steps to wait before validation is enabled. Usually, the GAN performs suboptimally for quite a while. Hence, disabling validation initially can prevent unnecessary validation and speeds up training. Default value is `0`.
+- `--val_frequency`: Number of batches to wait before performing the next validation run. Setting this to `1` will perform validation after one discriminator and generator step. You can set it to a higher value to speed up training. Default value is `20`.
+- `--logger_frequency`: Number of batches to wait before logging the next set of loss values. Setting it to a higher value will reduce clutter and slightly increase training speed. Default value is `20`.
 
 ## License:
 This repository is open source under the MIT clause. Feel free to use it for academic and educational purposes.

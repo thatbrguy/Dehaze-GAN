@@ -41,7 +41,9 @@ git clone https://github.com/thatbrguy/Dehaze-GAN.git
 2. A VGG-19 pretrained on the ImageNet dataset is required to calculate Perceptual loss. In this work, we used the weights provided by [link](placeholder)'s implementation. Download the weights from this [link](placeholder) and include it in this repository.
 > **Note:** You can use Keras' pretrained VGG-19 as well, as it can automatically download the ImageNet weights. However, my original implementation did not use it.
 
-3. Create two directories `A` and `B` in this repository. Place the inputs images into directory `A` and target images into directory `B`. Ensure that an input and target pair has the same name, otherwise it will be ignored by the program (For instance, if `1.jpg` is present in `A` it must also be present in `B`). Resize all images to be of size `(256, 256, 3)`.
+3. Create two directories `A` and `B` in this repository. Place the input images into directory `A` and target images into directory `B`. 
+- Ensure that an input and target image pair has the **same name**, otherwise the program will throw an error (For instance, if `1.jpg` is present in `A` it must also be present in `B`). 
+- Resize all images to be of size `(256, 256, 3)`.
 
 4. Train the model by uusing the following code. 
 ```

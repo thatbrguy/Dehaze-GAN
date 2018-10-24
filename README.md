@@ -1,5 +1,5 @@
 # Dehaze-GAN
-This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](Youtube!)][[Arxiv -- Will be published on 24th Oct 2018](soon!)]
+This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](https://www.youtube.com/watch?v=ioSL6ese46A)][[Arxiv](http://arxiv.org/abs/1810.09479)]
 
 <p align = "center">
 	<img src="/src/fog.png" alt="Dehaze-GAN in action" height=50% width=50%>

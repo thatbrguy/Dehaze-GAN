@@ -65,8 +65,8 @@ python main.py \
 --epochs 20
 ```
 The file `main.py` supports a lot of options, which are listed below:
-- `--mode`: Select between `train`, `test` and `inference` modes. Default value is `train`
-- `--model_name`: Tensorboard, logs, samples and checkpoint files are stored in a folder named `model_name`. Default value is `model`.
+- `--mode`: Select between `train`, `test` and `inference` modes. For `test` and `inference` modes, please place the checkpoint files at `./model/checkpoint` (You can replace `model` with your setting of the `--model_name` argument). Default value is `train`.
+- `--model_name`: Tensorboard, logs, samples and checkpoint files are stored in a folder named `model_name`. This argument allows you to provide the name of that folder. Default value is `model`.
 - `--lr`: Sets the learning rate for both the generator and the discriminator. Default value is `0.001`.
 - `--epochs`: Sets the number of epochs. Default value is `200`.
 - `--batch_size`: Sets the batch_size. Default value is `1`.

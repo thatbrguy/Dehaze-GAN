@@ -39,11 +39,11 @@ The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss in
 git clone https://github.com/thatbrguy/Dehaze-GAN.git
 ```
 
-2. A VGG-19 pretrained on the ImageNet dataset is required to calculate Perceptual loss. In this work, we used the weights provided by [link](placeholder)'s implementation. Download the weights from this [link](placeholder) and include it in this repository.
+2. A VGG-19 pretrained on the ImageNet dataset is required to calculate Perceptual loss. In this work, we used the weights provided by [machrisaa](https://github.com/machrisaa/tensorflow-vgg)'s implementation. Download the weights from this [link](https://mega.nz/#!xZ8glS6J!MAnE91ND_WyfZ_8mvkuSa2YcA7q-1ehfSm-Q1fxOvvs) and include it in this repository.
 > **Note:** You can use Keras' pretrained VGG-19 as well, as it can automatically download the ImageNet weights. However, my original implementation did not use it.
 
 3. Download the dataset.
-- We used the [NYU Depth Dataset V2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html) and the [Make 3D](link) dataset for training. The following code will download the NYU Depth Dataset V2 and create the hazy and clear image pairs. The images will be placed in directories `A` and `B` respectively. The formula and values used to create the synthetic haze are stated in our paper.
+- We used the [NYU Depth Dataset V2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html) and the [Make 3D](http://make3d.cs.cornell.edu/data.html) dataset for training. The following code will download the NYU Depth Dataset V2 and create the hazy and clear image pairs. The images will be placed in directories `A` and `B` respectively. The formula and values used to create the synthetic haze are stated in our paper.
 ```
 wget -O data.mat http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/nyu_depth_v2_labeled.mat
 python extract.py
@@ -89,14 +89,14 @@ The file `main.py` supports a lot of options, which are listed below:
 - `--logger_frequency`: Number of batches to wait before logging the next set of loss values. Setting it to a higher value will reduce clutter and slightly increase training speed. Default value is `20`.
 
 ## Replicating:
-The code in `legacy` can be used for replicating results of our model, as shown in the paper. The model architecture is the same, with the exception of a few old TF operations and messy code. Nevertheless, functionality is the same. The following steps explains how to replicate the results:
+The code in `legacy` can be used for replicating results of our model. The model architecture is the same, with the exception of a few old TF operations and messy code. Nevertheless, functionality is the same. The following steps explains how to replicate the results:
 
-1. Download the model checkpoint and the data used for testing from this [link](link). Place the tar file inside the `legacy` folder. Extract the contents using the following commands.
+1. Download the model checkpoint and the data used for testing from this [link](https://drive.google.com/file/d/1d2HUyumIu6BwSYiPuGOdnvTiCArQjrCm/view?usp=sharing). Place the tar file inside the `legacy` folder. Extract the contents using the following commands.
 ```
 cd legacy
 tar -xzvf replicate.tar.gz
 ``` 
-2. Move weights of the pretrained VGG-19 into the the `legacy` folder. The download [link](link) is reproduced here for convenience.
+2. Move weights of the pretrained VGG-19 into the the `legacy` folder. The download [link](https://mega.nz/#!xZ8glS6J!MAnE91ND_WyfZ_8mvkuSa2YcA7q-1ehfSm-Q1fxOvvs) is reproduced here for convenience.
 
 3. Run the code from the `legacy` folder using:
 ```

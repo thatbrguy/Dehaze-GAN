@@ -1,5 +1,5 @@
 # Dehaze-GAN
-This repository contains TensorFlow code for the paper titled A Single Image Haze Removal using a Generative Adversarial Network. [[Demo](https://www.youtube.com/watch?v=ioSL6ese46A)][[Arxiv](http://arxiv.org/abs/1810.09479)]
+This repository contains TensorFlow code for the paper titled **Single Image Haze Removal using a Generative Adversarial Network.** [[Demo](https://www.youtube.com/watch?v=ioSL6ese46A)][[Arxiv](http://arxiv.org/abs/1810.09479)]
 
 <p align = "center">
 	<img src="/src/fog.png" alt="Dehaze-GAN in action" height=50% width=50%>
@@ -38,15 +38,25 @@ The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss in
 ```
 git clone https://github.com/thatbrguy/Dehaze-GAN.git
 ```
+
 2. A VGG-19 pretrained on the ImageNet dataset is required to calculate Perceptual loss. In this work, we used the weights provided by [link](placeholder)'s implementation. Download the weights from this [link](placeholder) and include it in this repository.
 > **Note:** You can use Keras' pretrained VGG-19 as well, as it can automatically download the ImageNet weights. However, my original implementation did not use it.
 
-3. Create two directories `A` and `B` in this repository. 
+3. Download the dataset.
+- We used the [NYU Depth Dataset V2](https://cs.nyu.edu/~silberman/datasets/nyu_depth_v2.html) and the [Make 3D](link) dataset for training. The following code will download the NYU Depth Dataset V2 and create the hazy and clear image pairs. The images will be placed in directories `A` and `B` respectively. The formula and values used to create the synthetic haze are stated in our paper.
+```
+wget -O data.mat http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/nyu_depth_v2_labeled.mat
+python extract.py
+```
+> **Note:** We were not able to access some ground truth files from the Make3D link and hence we provided steps only for the NYU dataset. However, the algorithm in `extract.py` should apply for any dataset with depth information.
+
+4. In case you want to use your own dataset, follow these instructions. If not, skip this step.
+- Create two directories `A` and `B` in this repository. 
 - Place the input images into directory `A` and target images into directory `B`. 
 - Ensure that an input and target image pair has the **same name**, otherwise the program will throw an error (For instance, if `1.jpg` is present in `A` it must also be present in `B`). 
 - Resize all images to be of size `(256, 256, 3)`.
 
-4. Train the model by uusing the following code. 
+5. Train the model by using the following code. 
 ```
 python main.py \
 --A_dir A \
@@ -77,6 +87,21 @@ The file `main.py` supports a lot of options, which are listed below:
 - `--val_threshold`: Number of steps to wait before validation is enabled. Usually, the GAN performs suboptimally for quite a while. Hence, disabling validation initially can prevent unnecessary validation and speeds up training. Default value is `0`.
 - `--val_frequency`: Number of batches to wait before performing the next validation run. Setting this to `1` will perform validation after one discriminator and generator step. You can set it to a higher value to speed up training. Default value is `20`.
 - `--logger_frequency`: Number of batches to wait before logging the next set of loss values. Setting it to a higher value will reduce clutter and slightly increase training speed. Default value is `20`.
+
+## Replicating:
+The code in `legacy` can be used for replicating results of our model, as shown in the paper. The model architecture is the same, with the exception of a few old TF operations and messy code. Nevertheless, functionality is the same. The following steps explains how to replicate the results:
+
+1. Download the model checkpoint and the data used for testing from this [link](link). Place the tar file inside the `legacy` folder. Extract the contents using the following commands.
+```
+cd legacy
+tar -xzvf replicate.tar.gz
+``` 
+2. Move weights of the pretrained VGG-19 into the the `legacy` folder. The download [link](link) is reproduced here for convenience.
+
+3. Run the code from the `legacy` folder using:
+```
+python replicate.py
+```
 
 ## License:
 This repository is open source under the MIT clause. Feel free to use it for academic and educational purposes.

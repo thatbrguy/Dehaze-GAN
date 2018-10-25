@@ -13,18 +13,18 @@ from operations import Conv, ReLU, LeakyReLU, AvgPool, BatchNorm
 class GAN():
 
     def __init__(self, args):
-        self.num_discriminator_filters = args.D_filters #64 !!
-        self.layers = args.layers #4 !!
-        self.growth_rate = args.growth_rate #12 !!
-        self.gan_wt = args.gan_wt #2 !!
-        self.l1_wt = args.l1_wt #100 !!
-        self.vgg_wt = args.vgg_wt #10 !!        
-        self.restore = args.restore #True !!
-        self.batch_size = args.batch_size #1 !!
-        self.epochs = args.epochs #200 !!
-        self.lr = args.lr #0.001 !!
-        self.model_name = args.model_name #!!
-        self.decay = args.decay #!!
+        self.num_discriminator_filters = args.D_filters
+        self.layers = args.layers
+        self.growth_rate = args.growth_rate
+        self.gan_wt = args.gan_wt
+        self.l1_wt = args.l1_wt
+        self.vgg_wt = args.vgg_wt
+        self.restore = args.restore
+        self.batch_size = args.batch_size
+        self.epochs = args.epochs
+        self.lr = args.lr
+        self.model_name = args.model_name
+        self.decay = args.decay
         self.save_samples = args.save_samples
         self.sample_image_dir = args.sample_image_dir
         self.A_dir = args.A_dir
@@ -34,16 +34,15 @@ class GAN():
         self.val_threshold = args.val_threshold
         self.val_frequency = args.val_frequency
         self.logger_frequency = args.logger_frequency
-        #self.total_image_count = args.dataset_size #1550 * 2  # Due to flips
         
         self.EPS = 10e-12
         self.score_best = -1
-        self.ckpt_dir = os.path.join(os.getcwd(), self.model_name, 'checkpoint') # './model/' + str(self.num) + '/checkpoint'
-        self.tensorboard_dir = os.path.join(os.getcwd(), self.model_name, 'tensorboard') #'./model/' + str(self.num) + '/tensorboard'
+        self.ckpt_dir = os.path.join(os.getcwd(), self.model_name, 'checkpoint')
+        self.tensorboard_dir = os.path.join(os.getcwd(), self.model_name, 'tensorboard')
 
     def Layer(self, input_):
         """
-        This function contains the components inside a composite layer
+        This function creates the components inside a composite layer
         of a Dense Block.
         """
         with tf.variable_scope("Composite"):
@@ -87,8 +86,9 @@ class GAN():
         return output
 
     def generator(self, input_):
-
-        # 54 Layer Tiramisu
+        """
+        54 Layer Tiramisu
+        """
         with tf.variable_scope('InputConv') as scope:
             input_ = Conv(input_, kernel_size = 3, stride=1, output_channels = self.growth_rate * 4)
 
@@ -112,9 +112,9 @@ class GAN():
         return tf.nn.tanh(output)
 
     def discriminator(self, input_, target, stride = 2, layer_count = 4):
-
-        # Using the PatchGAN as a discriminator
-
+        """
+        Using the PatchGAN as a discriminator
+        """
         input_ = tf.concat([input_, target], axis=3, name='Concat')
         layer_specs = self.num_discriminator_filters * np.array([1, 2, 4, 8])
 
@@ -304,7 +304,9 @@ class GAN():
             print('Discriminator parameter count:', counts[1])
             print('Total parameter count:', counts[2])
 
-            start = self.step.eval() // (batches * 2) # Explain this
+            # The variable below is divided by 2 since both the Generator 
+            # and the Discriminator increases step count by 1
+            start = self.step.eval() // (batches * 2)
 
             for i in range(start, self.epochs):
 

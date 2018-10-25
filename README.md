@@ -11,7 +11,7 @@ The model has the following components:
 - The 56-Layer Tiramisu as the generator.
 - A patch-wise discriminator.
 - A weighted loss function involving three components, namely:
-  - GAN loss compoenent.
+  - GAN loss component.
   - Perceptual loss component (aka VGG loss component).
   - L1 loss component.
 

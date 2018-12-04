@@ -15,7 +15,7 @@ The model has the following components:
   - Perceptual loss component (aka VGG loss component).
   - L1 loss component.
 
-The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss involves using only the (what) component of (this work). 
+The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss involves using only the Feature Reconstruction Loss component from this [work](https://arxiv.org/pdf/1603.08155.pdf). 
 
 <p align = "center">
 	<img src="/src/model.png" alt="Block diagram of the Dehaze-GAN">

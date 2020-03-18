@@ -26,6 +26,7 @@ The GAN loss component is dervied from the pix2pix GAN paper. Perceptual loss in
 1. The first version of this project was completed around December 2017. The demo video (dated March 2018) reflects the performance of one of the final versions, however some iterative improvements were made after that. 
 2. This repository contains code that can be used for any application, and is not limited to Dehazing. 
 3. For recreating the results reported in the paper, use the repository `legacy` (for more details refer below). This repository is the refactored version of the final model, but it uses newer versions of some TensorFlow operations. Those operations are not available in the old saved checkpoints.
+4. The codebase uses OpenCV's `imread` and `imwrite` functions without converting them from BGR to RGB space. However, there might be cases where this type of usage (such as was raised in this issue about `extract.py`) may not be desirable. To maintain reproducibility, the original code is left intact. If you application desires usage of images in the RGB space, you could manually convert them from BGR to RGB.  
 
 ## Requirements:
 - TensorFlow (version 1.4+)

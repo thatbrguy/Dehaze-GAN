@@ -10,7 +10,7 @@ VGG_MEAN = [103.939, 116.779, 123.68]
 
 class Vgg19:
     def __init__(self, vgg19_npy_path=None):
-        self.data_dict = np.load('./vgg19.npy', encoding='latin1').item()
+        self.data_dict = np.load('./vgg19.npy', encoding='latin1', allow_pickle=True).item()
 
     def feature_map(self, rgb):
         """

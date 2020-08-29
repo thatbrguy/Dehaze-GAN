@@ -6,6 +6,9 @@ This repository contains TensorFlow code for the paper titled **Single Image Haz
 	</img>
 </p>
 
+## Update (August 2020)
+This work has been accepted for the 2020 International Conference on Wireless Communications, Signal Processing and Networking (**WiSPNET 2020**). The arxiv version of this work (originally published around 2018) will be updated with the accepted version of the paper. Will attach a document listing out the major updates to the paper very soon!
+
 ## Features:
 The model has the following components:
 - The 56-Layer Tiramisu as the generator.

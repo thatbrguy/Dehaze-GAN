@@ -32,7 +32,7 @@ parser.add_argument("--epochs", help = "Epochs (Default = 200)",
 parser.add_argument("--model_name", help = "Set a model name",
                     default = 'model')
 parser.add_argument("--save_samples", help = "Generate image samples after validation (Default = False)",
-                    type = bool, default = True) 
+                    type = bool, default = False) 
 parser.add_argument("--sample_image_dir", help = "Directory containing sample images (Used only if save_samples is True; Default = samples)",
                     default = 'samples')
 parser.add_argument("--A_dir", help = "Directory containing the input images for training, testing or inference (Default = A)",
@@ -40,7 +40,7 @@ parser.add_argument("--A_dir", help = "Directory containing the input images for
 parser.add_argument("--B_dir", help = "Directory containing the target images for training or testing. In inference mode, this is used to store results (Default = B)",
                     default = 'B')
 parser.add_argument("--custom_data", help = "Using your own data as input and target (Default = True)",
-                    type = bool, default = False)
+                    type = bool, default = True)
 parser.add_argument("--val_fraction", help = "Fraction of dataset to be split for validation (Default = 0.15)",
                    type = float, default = 0.15)
 parser.add_argument("--val_threshold", help = "Number of steps to wait before validation is enabled. (Default = 0)",

@@ -86,7 +86,7 @@ The file `main.py` supports a lot of options, which are listed below:
 - `--sample_image_dir`: If `save_samples` is set to `True`, you must provide sample images placed in a directory. Give the name of that directory to this argument. Default value is `samples`.
 - `--custom_data`: Boolean flag that allows you to use your own data for training. Default is `True`. (Note: As of now, I have not linked the data I used for training).
 - `--A_dir`: Directory containing the ipnut images. Only used when `custom_data` is set to `True`. Default value is `A`.
-- `--B_dir`: Directory containing the ipnut images. Only used when `custom_data` is set to `True`. Default value is `B`.
+- `--B_dir`: Directory containing the target images. Only used when `custom_data` is set to `True`. Default value is `B`.
 - `--val_fraction`: Fraction of the data to be used for validation. Only used when `custom_data` is set to `True`. Default value is `0.15`.
 - `--val_threshold`: Number of steps to wait before validation is enabled. Usually, the GAN performs suboptimally for quite a while. Hence, disabling validation initially can prevent unnecessary validation and speeds up training. Default value is `0`.
 - `--val_frequency`: Number of batches to wait before performing the next validation run. Setting this to `1` will perform validation after one discriminator and generator step. You can set it to a higher value to speed up training. Default value is `20`.

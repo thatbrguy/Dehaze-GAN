@@ -27,6 +27,9 @@ if __name__ == '__main__':
         img = resize(images[i].transpose(1, 2, 0), (256, 256, 3), mode = 'reflect')
         img = (img * 255).astype(np.uint8)
 
+        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        fog = cv2.cvtColor(fog.astype(np.uint8), cv2.COLOR_RGB2BGR)
+
         cv2.imwrite(os.path.join('A', str(i).zfill(4) + '.png'), fog)
         cv2.imwrite(os.path.join('B', str(i).zfill(4) + '.png'), img)
         

@@ -12,18 +12,17 @@ class Vgg19:
     def __init__(self, vgg19_npy_path=None):
         self.data_dict = np.load('./vgg19.npy', encoding='latin1').item()
 
-    def feature_map(self, rgb):
+    def feature_map(self, input_):
         """
         load variable from npy to build the VGG
 
-        :param rgb: rgb image [batch, height, width, 3] values scaled [0, 1]
+        :param input_: bgr image [batch, height, width, 3] values scaled [-1, 1]
         """
 
         start_time = time.time()
-        rgb_scaled = rgb * 255.0
+        bgr_scaled = ((input_ + 1) / 2) * 255.0
 
-        # Convert RGB to BGR
-        red, green, blue = tf.split(axis=3, num_or_size_splits=3, value=rgb_scaled)
+        blue, green, red = tf.split(axis=3, num_or_size_splits=3, value=bgr_scaled)
         assert red.get_shape().as_list()[1:] == [224, 224, 1]
         assert green.get_shape().as_list()[1:] == [224, 224, 1]
         assert blue.get_shape().as_list()[1:] == [224, 224, 1]

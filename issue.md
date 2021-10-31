@@ -73,7 +73,7 @@ Step 2 of the instructions section in the README file asks the user to choose on
 - Now, **if** you would like to use the `master` branch: 
 
 	- Verify that you are in the `master` branch by running `git branch`.
-	- Verify that you are using the latest commit by running `git log`. The latest commit message should say `june common patch` and it should have the month and year as `June 2021`.
+	- Verify that you are **either** using the commit `07bd52840574d0c8e1f3a0482538a674a64618c4` **or** any commit made **after** that by running `git log`. The commit message of commit `07bd52840574d0c8e1f3a0482538a674a64618c4` should say `june common patch` and it should have the month and year as `June 2021`. For simplicity, you can just use the newest commit in the branch (since the newest commit is made after the commit `07bd52840574d0c8e1f3a0482538a674a64618c4`).
 	- Once both are verified, you can proceed to step 3 of the instructions in the README file.
 
 - Else, **if** you would like to use the `alt` branch: 
@@ -84,7 +84,7 @@ Step 2 of the instructions section in the README file asks the user to choose on
 	git checkout alt
 	```
 	- Verify that you are in the `alt` branch by running `git branch`.
-	- Verify that you are using the latest commit by running `git log`. The latest commit message should say `vgg patch` and it should have the month and year as `June 2021`.
+	- Verify that you are **either** using the commit `95c4e96635e6954499b9c27693a3e11f45019995` **or** any commit made **after** that by running `git log`. The commit message of commit `95c4e96635e6954499b9c27693a3e11f45019995` should say `vgg patch` and it should have the month and year as `June 2021`. For simplicity, you can just use the newest commit in the branch (since the newest commit is made after the commit `95c4e96635e6954499b9c27693a3e11f45019995`).
 	- Once both are verified, you can proceed to step 3 of the instructions in the README file.
 
 

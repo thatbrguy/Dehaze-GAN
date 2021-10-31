@@ -10,7 +10,9 @@ This repository contains TensorFlow code for the paper titled **Single Image Haz
 On a recent review of some code I found a few issues. In the document [issue.md](issue.md), I have provided an explanation of the issues, their possible impact, and the remedies I have taken to account for the issues. Please read the document before attempting to use the codebase. I apologize for the inconvenience.
 
 ## Update (August 2020)
-This work has been accepted for the 2020 International Conference on Wireless Communications, Signal Processing and Networking (**WiSPNET 2020**). The arxiv version of this work (originally published around 2018) will be updated with the accepted version of the paper. Will attach a document listing out the major updates to the paper soon!
+This work has been accepted for the 2020 International Conference on Wireless Communications, Signal Processing and Networking (**WiSPNET 2020**). The arxiv version of this work (originally published around 2018) will be updated with the accepted version of the paper. ~~Will attach a document listing out the major updates to the paper soon!~~
+
+> (EDIT: Oct 2021) I wanted to upload a document describing the major changes between v1 and v2 of the arxiv papers but I was not able to allocate enough time to do so. The v1 paper was put on arxiv sometime in October 2018. The v2 version is shorter, but is better written than the v1 version and also has made some corrections. The v2 version of the paper is the one that was accepted for the WiSPNET 2020 conference. The interested reader can access both versions from arxiv. However, it is recommended to follow the v2 version of the paper (along with `issue.md` and other docs in this codebase).
 
 ## Features:
 The model has the following components:
